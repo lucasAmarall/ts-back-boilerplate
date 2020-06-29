@@ -5,7 +5,7 @@ class UserRespository {
   private user: UserModel = new UserModel()
 
   public async create (data: IUser): Promise<IUser> {
-    return this.user.signUp(data)
+    return this.user.create(data)
   }
 }
 

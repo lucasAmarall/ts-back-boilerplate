@@ -1,6 +1,5 @@
 
 export default {
-  SALT_KEY: 'DJLADKDL-JDLKASJDL-ADJKLADADKLAJD-SADSALDJLKAS',
-  SALT_ROUNDS: 10,
-  connectionString: 'mongodb+srv://root:root@cluster0-ytlwy.gcp.mongodb.net/test?retryWrites=true&w=majority'
+  SALT_KEY: 'DJLADKDL-JDLKASJDL-ADJKLADADKLAJD-SADSALDJLKAS-09183091283#1-0381!@$#@$!%#@$kjjadlj$@#$#@@$@#%%%!@$!@#09813',
+  connectionString: 'mongodb+srv://root:root@cluster0-ielim.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority'
 }

@@ -1,8 +1,7 @@
+import GenderEnum from '../enums/GenderEnum';
 export interface IUser {
   email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  photoId: string;
-  productList: [string];
+  name: string;
+  password?: string;
+  gender: GenderEnum;
 }

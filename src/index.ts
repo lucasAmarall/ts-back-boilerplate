@@ -4,7 +4,9 @@ import mongoose from 'mongoose'
 import CONFIG from './config'
 import routes from './router'
 import bodyParser from 'body-parser'
-
+import ErrorMiddleware from './middlewares/ErrorMiddleware';
+import ErrorHandler from './helpers/ErrorHandler'
+import HandleError from './helpers/HandleError'
 class App {
   public express: express.Application
 
@@ -36,6 +38,8 @@ class App {
 
   private routes (): void {
     this.express.use(routes)
+    this.express.use(routes)
+    this.express.use(ErrorMiddleware.handler);
   }
 }
 

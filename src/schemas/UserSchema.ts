@@ -1,25 +1,21 @@
 import { Schema } from 'mongoose'
+import GenderEnum from '../enums/GenderEnum';
+import { IUser } from '../interfaces/IUser';
 
-const UserSchema = new Schema({
-  mail: {
+const UserSchema = new Schema<IUser>({
+  email: {
     type: String,
     required: true,
     lowercase: true,
-    maxlength: 50,
+    maxlength: 100,
     index: true,
     unique: true
   },
-  firstName: {
+  name: {
     type: String,
     lowercase: true,
     required: true,
-    maxlength: 20
-  },
-  lastName: {
-    type: String,
-    required: true,
-    maxlength: 20,
-    lowercase: true
+    maxlength: 35
   },
   password: {
     type: String,
@@ -27,11 +23,10 @@ const UserSchema = new Schema({
     maxlength: 100,
     lowercase: true
   },
-  photoId: {
+  gender: {
     type: String,
-    required: false,
-    maxlength: 200,
-    lowercase: true
+    enum: Object.values(GenderEnum),
+    required: true
   }
 }, {
   timestamps: true

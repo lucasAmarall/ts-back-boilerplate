@@ -23,24 +23,21 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
-    "rules": {
-      "import/extensions": [
-         "error",
-         "ignorePackages",
-         {
-           "ts": "never"
-         }
-      ]
-   }
-  },
+    "import/extensions": [
+       "error",
+       "ignorePackages",
+       {
+         "js": "never",
+         "jsx": "never",
+         "ts": "never",
+         "tsx": "never"
+       }
+    ]
+ },
   "settings": {
-    "import/extensions": [".ts"],
     "import/resolver": {
-      "typescript": {
-          "extensions": [
-            ".ts"
-          ]
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   }

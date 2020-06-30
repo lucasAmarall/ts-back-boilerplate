@@ -12,7 +12,7 @@ class App {
   public constructor() {
     this.express = express();
     this.middlewares();
-    this.database();
+    App.database();
     this.routes();
     if (process.env.DEBUGGER) console.log('Debugger activated');
   }
@@ -23,7 +23,7 @@ class App {
     this.express.use(cors());
   }
 
-  private database(): void {
+  private static database(): void {
     try {
       mongoose.set('useCreateIndex', true);
       mongoose.connect(CONFIG.connectionString, {

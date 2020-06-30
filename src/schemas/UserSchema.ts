@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose'
 import GenderEnum from '../enums/GenderEnum';
-import { IUser } from '../interfaces/IUser';
+import IUser from '../interfaces/IUser';
 
 const UserSchema = new Schema<IUser>({
   email: {
@@ -27,7 +27,13 @@ const UserSchema = new Schema<IUser>({
     type: String,
     enum: Object.values(GenderEnum),
     required: true
-  }
+  },
+  ads : [
+    {
+      type:Schema.Types.ObjectId,
+      ref:'Ad'
+    }
+  ]
 }, {
   timestamps: true
 })

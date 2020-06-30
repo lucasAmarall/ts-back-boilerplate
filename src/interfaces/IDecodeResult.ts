@@ -1,4 +1,4 @@
-export default interface IDecodeResult {
+export default interface IDecodeResult{
   id: string;
   iat: number;
   exp: number;

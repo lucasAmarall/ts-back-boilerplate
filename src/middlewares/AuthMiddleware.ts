@@ -9,8 +9,8 @@ class AuthMiddleware {
       if(!token){
         throw new ErrorHandler(401, 'unauthorized')
       }
-      const decondedSession = await JWT.decodeSession(token)
-      req.body.decondedSession = decondedSession;
+      const decodedSession = await JWT.decodeSession(token)
+      req.body.decodedSession = decodedSession;
       next()
     } catch(e){
       next(new ErrorHandler(401,e))

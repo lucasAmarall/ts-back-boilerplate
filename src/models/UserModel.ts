@@ -1,7 +1,7 @@
 import UserSchema from '../schemas/UserSchema'
 import { Model, model , DocumentQuery} from 'mongoose'
 import IUserDocument from '../interfaces/IUserDocument'
-import { IUser } from '../interfaces/IUser'
+import IUser from '../interfaces/IUser'
 class UserModel {
   private user: Model<IUserDocument> = model<IUserDocument>('User', UserSchema)
   
@@ -10,15 +10,15 @@ class UserModel {
   }
 
   public getById (id: string): DocumentQuery<IUserDocument, IUserDocument, {}> {
-    return this.user.findById(id, ['-password']);
+    return this.user.findById(id, ['-password']).populate('ads', ['title', 'description','days','price', '_id'])
   }
 
   public read ({password, email}: IUser) : DocumentQuery<IUserDocument, IUserDocument, {}> {
     return this.user.findOne({password, email}, ['-password'])
   }
 
-  public async delete ({email, password}: IUser): DocumentQuery<IUserDocument, IUserDocument, {}> {
-    return this.user.findOneAndDelete({email,password});
+  public delete ({email, password}: IUser): DocumentQuery<IUserDocument, IUserDocument, {}> {
+    return this.user.findOneAndDelete({email,password})
   }
 }
 

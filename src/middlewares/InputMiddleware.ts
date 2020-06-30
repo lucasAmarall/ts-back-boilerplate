@@ -9,6 +9,7 @@ class Validator {
         req.body = value;
         next();
       } catch (error) {
+        delete error._original
         res.status(400).json({ error })
       }
     }

@@ -1,8 +1,9 @@
 import UserRepository from '../repositories/UserRepository'
 import ErrorHandler from '../helpers/ErrorHandler';
 import { Request, Response, NextFunction } from 'express'
-import { IUser } from '../interfaces/IUser'
+import IUser from '../interfaces/IUser'
 import JWT from '../helpers/JWT';
+import IDecodedData from '../interfaces/IDecodedData';
 
 class UserController {
 
@@ -18,9 +19,9 @@ class UserController {
 
   public async read (req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
-      // todo define type
-      const { decondedSession } = req.body;
-      const { id } = decondedSession;
+      const body: IDecodedData<IUser> = req.body;
+      const { decodedSession } = body;
+      const { id } = decodedSession;
       const user = await UserRepository.getById(id);
       return res.status(200).json(user);
     } catch (error) {

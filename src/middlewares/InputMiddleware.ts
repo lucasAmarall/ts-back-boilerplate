@@ -2,7 +2,7 @@
 import { NextFunction, Request, Response } from 'express'
 
 class Validator {
-  validate(validator: any) {
+  static validate(validator: any) {
     return async function (req: Request, res: Response, next: NextFunction) {
       try {
         const value = await validator.validateAsync(req.body)
@@ -15,4 +15,4 @@ class Validator {
   }
 }
 
-export default new Validator()
+export default Validator;

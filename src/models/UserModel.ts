@@ -1,12 +1,24 @@
 import UserSchema from '../schemas/UserSchema'
-import { Model, model } from 'mongoose'
+import { Model, model , DocumentQuery} from 'mongoose'
 import IUserDocument from '../interfaces/IUserDocument'
 import { IUser } from '../interfaces/IUser'
 class UserModel {
   private user: Model<IUserDocument> = model<IUserDocument>('User', UserSchema)
-
+  
   public create (user: IUser): Promise<IUserDocument> {
     return this.user.create(user)
+  }
+
+  public getById (id: string): DocumentQuery<IUserDocument, IUserDocument, {}> {
+    return this.user.findById(id, ['-password']);
+  }
+
+  public read ({password, email}: IUser) : DocumentQuery<IUserDocument, IUserDocument, {}> {
+    return this.user.findOne({password, email}, ['-password'])
+  }
+
+  public async delete ({email, password}: IUser): DocumentQuery<IUserDocument, IUserDocument, {}> {
+    return this.user.findOneAndDelete({email,password});
   }
 }
 

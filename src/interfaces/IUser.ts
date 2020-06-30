@@ -1,7 +1,9 @@
 import GenderEnum from '../enums/GenderEnum';
-export interface IUser {
+import IDateInformation from "./IDateInformation";
+
+export interface IUser extends IDateInformation {
   email: string;
   name: string;
-  password?: string;
+  password: string;
   gender: GenderEnum;
 }

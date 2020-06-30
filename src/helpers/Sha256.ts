@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import config from '../config/index'
+import config from '../config'
 const { SALT_KEY } = config;
 
 const sha256 = (str: string) => crypto.createHash('sha256').update(str + SALT_KEY, 'utf8').digest('hex')
